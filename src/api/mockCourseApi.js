@@ -46,7 +46,7 @@ const courses = [
   }
 ];
 
-function replaceAll(str, find, replace) {
+function replaceAll(str = '', find, replace) {
   return str.replace(new RegExp(find, 'g'), replace);
 }
 
@@ -69,7 +69,7 @@ class CourseApi {
       setTimeout(() => {
         // Simulate server-side validation
         const minCourseTitleLength = 1;
-        if (course.title.length < minCourseTitleLength) {
+        if (!course.title || course.title.length < minCourseTitleLength) {
           reject(`Title must be at least ${minCourseTitleLength} characters.`);
         }
 
